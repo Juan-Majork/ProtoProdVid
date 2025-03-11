@@ -6,9 +6,6 @@ public class AttackSystem : MonoBehaviour
     public float mana;
 
     [SerializeField]
-    private float damage;
-
-    [SerializeField]
     private Transform baseSpawn;
     [SerializeField]
     private Transform upSpawn;

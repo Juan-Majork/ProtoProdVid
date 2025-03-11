@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8219138235625684917}
   - component: {fileID: 8637996611873520599}
-  - component: {fileID: 8514346035509960956}
   - component: {fileID: 5253336942656811477}
+  - component: {fileID: 8514346035509960956}
   m_Layer: 0
   m_Name: magicRecharge
   m_TagString: Untagged
@@ -89,22 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8514346035509960956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2715542278395386960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57a607971d0292449955d30447827d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manaRestore: 100
-  fireMagic: 0
-  waterMagic: 0
-  rockMagic: 0
 --- !u!61 &5253336942656811477
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -151,3 +135,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8514346035509960956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2715542278395386960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57a607971d0292449955d30447827d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manaRestore: 100
+  fireMagic: 0
+  waterMagic: 0
+  rockMagic: 0
