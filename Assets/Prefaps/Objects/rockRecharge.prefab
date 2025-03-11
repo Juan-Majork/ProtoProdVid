@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6108331942194330294
+--- !u!1001 &7940300521489560034
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2715542278395386960, guid: 21183904da34e844092faba5c823cb4f, type: 3}
       propertyPath: m_Name
-      value: fireRecharge
+      value: rockRecharge
       objectReference: {fileID: 0}
     - target: {fileID: 8219138235625684917, guid: 21183904da34e844092faba5c823cb4f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -58,11 +58,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8637996611873520599, guid: 21183904da34e844092faba5c823cb4f, type: 3}
       propertyPath: m_Color.g
-      value: 0.52006483
+      value: 0.1462613
       objectReference: {fileID: 0}
     - target: {fileID: 8637996611873520599, guid: 21183904da34e844092faba5c823cb4f, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.2830189
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

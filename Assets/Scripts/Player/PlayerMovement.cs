@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private bool canJump;
     private bool isRight = true;
 
+    private AttackSystem attackSystem;
+
     private Rigidbody2D rb;
 
     private void Awake()
@@ -64,6 +66,19 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("floor"))
         {
             canJump = true;
+        }
+
+        if (collision.gameObject.CompareTag("fire"))
+        {
+            attackSystem.magicalBonus = 1;
+        }
+        if (collision.gameObject.CompareTag("water"))
+        {
+            attackSystem.magicalBonus = 2;
+        }
+        if (collision.gameObject.CompareTag("rock"))
+        {
+            attackSystem.magicalBonus = 3;
         }
     }
 }

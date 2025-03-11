@@ -4,7 +4,7 @@ using UnityEngine;
 public class AttackSystem : MonoBehaviour
 {
 
-    public int attack = 3;
+    public int attack = 2;
 
     public int magicalBonus = 0;
     //1 = fire
@@ -25,6 +25,7 @@ public class AttackSystem : MonoBehaviour
 
     public void magicPlus()
     {
+
         if (magicalBonus == 1)
         {
             attack += 4;

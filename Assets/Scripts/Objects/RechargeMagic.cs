@@ -5,13 +5,6 @@ public class RechargeMagic : MonoBehaviour
     [SerializeField] 
     private float manaRestore;
 
-    [SerializeField]
-    private bool fireMagic;
-    [SerializeField]
-    private bool waterMagic;
-    [SerializeField]
-    private bool rockMagic;
-
     /*
     private void OnTriggerEnter2D(Collider2D collision)
     {

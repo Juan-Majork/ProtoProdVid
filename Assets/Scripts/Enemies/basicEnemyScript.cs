@@ -3,17 +3,20 @@ using UnityEngine;
 public class basicEnemyScript : MonoBehaviour
 {
 
-    private int health = 10;
+    [SerializeField] private int health;
 
     public float KBForce;
     public float KBCounter;
     public float KBTotalTime;
     public bool KBRight;
-    
+
+    [SerializeField] public int type;
 
     private AttackSystem atck;
 
     private StaffMovement staffM;
+
+    private DropScript dropScript;
 
     public Rigidbody2D rb;
 
@@ -56,6 +59,7 @@ public class basicEnemyScript : MonoBehaviour
                 if (health < 0)
                 {
                     Destroy(gameObject);
+                    dropScript.Dropeo(type);
                 }
             }
             if (KBRight == false && KBCounter < KBTotalTime)
@@ -67,6 +71,7 @@ public class basicEnemyScript : MonoBehaviour
                 if (health < 0)
                 {
                     Destroy(gameObject);
+                    dropScript.Dropeo(type);
                 }
             }
             
