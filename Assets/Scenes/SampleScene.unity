@@ -619,7 +619,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mana: 0
-  damage: 0
   baseSpawn: {fileID: 0}
   upSpawn: {fileID: 0}
   downSpawn: {fileID: 0}
@@ -770,7 +769,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2715542278395386960, guid: 21183904da34e844092faba5c823cb4f, type: 3}
       propertyPath: m_Name
-      value: Square
+      value: magicRecharge
       objectReference: {fileID: 0}
     - target: {fileID: 8219138235625684917, guid: 21183904da34e844092faba5c823cb4f, type: 3}
       propertyPath: m_LocalPosition.x
