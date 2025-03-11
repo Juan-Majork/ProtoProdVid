@@ -12,6 +12,7 @@ public class RechargeMagic : MonoBehaviour
     [SerializeField]
     private bool rockMagic;
 
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("player"))
@@ -21,4 +22,5 @@ public class RechargeMagic : MonoBehaviour
             Destroy (gameObject);
         }
     }
+    */
 }

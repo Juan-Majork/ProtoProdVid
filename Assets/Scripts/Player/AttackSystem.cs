@@ -1,26 +1,44 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AttackSystem : MonoBehaviour
 {
-    [SerializeField]
-    public float mana;
 
-    [SerializeField]
-    private Transform baseSpawn;
-    [SerializeField]
-    private Transform upSpawn;
-    [SerializeField]
-    private Transform downSpawn;
+    public int attack = 3;
 
-    [SerializeField]
-    private GameObject baseAttack;
-    [SerializeField]
-    private GameObject upAttack;
-    [SerializeField]
-    private GameObject downAttack;
+    public int magicalBonus = 0;
+    //1 = fire
+    //2 = water
+    //3 = rock
 
-    private void Awake()
+
+    private void Start()
     {
-        mana = 0f;
+        
     }
+
+    private void Update()
+    {
+        magic();
+    }
+
+    public void magic()
+    {
+        if (magicalBonus == 1)
+        {
+            attack += 4;
+        }
+
+        if (magicalBonus == 2)
+        {
+            attack += 2;
+        }
+
+        if (magicalBonus == 3)
+        {
+            attack += 3;
+        }
+    }
+
+
 }
