@@ -5,12 +5,24 @@ public class basicEnemyScript : MonoBehaviour
 
     private int health = 10;
 
+    public float KBForce;
+    public float KBCounter;
+    public float KBTotalTime;
+    public bool KBRight;
+    
+
     private AttackSystem atck;
 
+    private StaffMovement staffM;
+
+    public Rigidbody2D rb;
 
     private void Awake()
     {
         atck = Object.FindAnyObjectByType<AttackSystem>();
+        staffM = Object.FindAnyObjectByType<StaffMovement>();
+        rb = GetComponent<Rigidbody2D>();
+
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,16 +38,38 @@ public class basicEnemyScript : MonoBehaviour
     }
 
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("staff"))
+        if (collision.gameObject.CompareTag("staff") && !staffM.active)
         {
-            health -= atck.attack;
-            Debug.Log("health left: " +  health);
-            if (health < 0)
+            KBCounter = 0;
+
+            if (gameObject.transform.position.x > collision.transform.position.x) KBRight = true;
+            else KBRight = false;
+
+            if (KBRight == true && KBCounter < KBTotalTime)
             {
-                Destroy(gameObject);
+                health -= atck.attack;
+                KBCounter += Time.deltaTime;
+                rb.linearVelocity = new Vector2 (KBForce, KBForce);
+                Debug.Log("health left: " +  health);
+                if (health < 0)
+                {
+                    Destroy(gameObject);
+                }
             }
+            if (KBRight == false && KBCounter < KBTotalTime)
+            {
+                health -= atck.attack;
+                rb.linearVelocity = new Vector2(-KBForce, KBForce);
+                KBCounter += Time.deltaTime;
+                Debug.Log("health left: " + health);
+                if (health < 0)
+                {
+                    Destroy(gameObject);
+                }
+            }
+            
         }
     }
 

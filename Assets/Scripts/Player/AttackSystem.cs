@@ -19,10 +19,11 @@ public class AttackSystem : MonoBehaviour
 
     private void Update()
     {
-        magic();
+        magicPlus();
     }
 
-    public void magic()
+
+    public void magicPlus()
     {
         if (magicalBonus == 1)
         {
@@ -40,5 +41,6 @@ public class AttackSystem : MonoBehaviour
         }
     }
 
+    
 
 }

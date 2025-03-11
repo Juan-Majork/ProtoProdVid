@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
 
         if (horizontalInput != 0)
         {
@@ -44,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
 
-        if (Input.GetKey("space") && canJump)
+        if (Input.GetKey("w") && canJump)
         {
             rb.AddForce (Vector2.up * speedY, ForceMode2D.Impulse);
             canJump = false;
