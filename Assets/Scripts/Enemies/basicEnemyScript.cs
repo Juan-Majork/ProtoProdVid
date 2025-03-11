@@ -25,21 +25,13 @@ public class basicEnemyScript : MonoBehaviour
         atck = Object.FindAnyObjectByType<AttackSystem>();
         staffM = Object.FindAnyObjectByType<StaffMovement>();
         rb = GetComponent<Rigidbody2D>();
-
+        dropScript = GetComponent<DropScript>();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void FixedUpdate()
     {
-        
+        Health();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -58,8 +50,8 @@ public class basicEnemyScript : MonoBehaviour
                 Debug.Log("health left: " +  health);
                 if (health < 0)
                 {
+                    dropScript.Dropeo();
                     Destroy(gameObject);
-                    dropScript.Dropeo(type);
                 }
             }
             if (KBRight == false && KBCounter < KBTotalTime)
@@ -70,13 +62,21 @@ public class basicEnemyScript : MonoBehaviour
                 Debug.Log("health left: " + health);
                 if (health < 0)
                 {
+                    dropScript.Dropeo();
                     Destroy(gameObject);
-                    dropScript.Dropeo(type);
                 }
             }
             
         }
     }
 
+    private void Health()
+    {
+        if (health < 0)
+        {
+            dropScript.Dropeo();
+            Destroy(gameObject);
+        }
+    }
 
 }
