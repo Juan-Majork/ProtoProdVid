@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9137255
       objectReference: {fileID: 0}
+    - target: {fileID: 3788326257715474574, guid: c0eb716c26e2f4a489ef560684122f3e, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5125111788900903694, guid: c0eb716c26e2f4a489ef560684122f3e, type: 3}
       propertyPath: m_Name
       value: fireEnemy
