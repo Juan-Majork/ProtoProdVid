@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6652117081456842203}
   - component: {fileID: 6388398781018472483}
+  - component: {fileID: 8452433053560286344}
   - component: {fileID: 5668099692356485984}
-  - component: {fileID: 3742401214176396373}
   m_Layer: 0
   m_Name: Staff
   m_TagString: staff
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 548431390910153228}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.79, y: -0.0157, z: 0}
-  m_LocalScale: {x: 1.05001, y: 0.73918146, z: 0.8077}
+  m_LocalPosition: {x: 1.2059, y: 0.0195, z: 0}
+  m_LocalScale: {x: 1.0918, y: 0.60132855, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4478105759379068533}
@@ -89,21 +89,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5668099692356485984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548431390910153228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2e410fe504cf4b4cbbbf39abe3e3d7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 1
---- !u!70 &3742401214176396373
-CapsuleCollider2D:
+--- !u!58 &8452433053560286344
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -136,9 +123,21 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.00000023841858}
-  m_Size: {x: 1, y: 1}
-  m_Direction: 0
+  m_Offset: {x: 0.0053830147, y: 0.012216552}
+  m_Radius: 0.46429
+--- !u!114 &5668099692356485984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548431390910153228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2e410fe504cf4b4cbbbf39abe3e3d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
 --- !u!1 &5720005089875732168
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,11 +150,11 @@ GameObject:
   - component: {fileID: 944549688962686973}
   - component: {fileID: 2200022971672885414}
   - component: {fileID: 6646877543721182181}
-  - component: {fileID: 1529735497724132253}
   - component: {fileID: 2389292105413750217}
+  - component: {fileID: 1529735497724132253}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,8 +168,8 @@ Transform:
   m_GameObject: {fileID: 5720005089875732168}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.8, z: 0}
-  m_LocalScale: {x: 1, y: 2.04, z: 1}
+  m_LocalPosition: {x: -2.7831001, y: -2.7335, z: 0}
+  m_LocalScale: {x: 0.6812927, y: 1.2542598, z: 0.6812927}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6652117081456842203}
@@ -221,7 +220,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.68639606, g: 0, b: 0.8773585, a: 1}
+  m_Color: {r: 0.6830188, g: 0, b: 0.6564924, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -304,20 +303,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1529735497724132253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5720005089875732168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44af016fd17985742ba265d18cb564e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attack: 2
-  magicalBonus: 0
 --- !u!114 &2389292105413750217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,3 +317,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedX: 10
   speedY: 10
+--- !u!114 &1529735497724132253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720005089875732168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44af016fd17985742ba265d18cb564e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 3
+  magicalBonus: 0

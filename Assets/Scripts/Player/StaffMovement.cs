@@ -6,29 +6,29 @@ public class StaffMovement : MonoBehaviour
     private int velX = 1;
     public bool active = true;
     private float movementTime = 0;
-    private float coolDown = 0.7f;
+    private float coolDown = 0.2f;
+
+    private basicEnemyScript basicEnemyScript;
 
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        
+        basicEnemyScript = Object.FindAnyObjectByType<basicEnemyScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveTheStaff();
+        MoveTheStaff(); //Ataque de baston
     }
 
     public void MoveTheStaff()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) //Activacion del baston
         {
             if (active)
             {
-                transform.Translate(velX * 1f, 0, 0);
+                transform.Translate(velX * 0.5f, 0, 0);
                 
                 active = false;
                 Debug.Log("enter");
@@ -36,14 +36,15 @@ public class StaffMovement : MonoBehaviour
             }
         }
 
-        if (!active)
+        if (!active) //Reseteo del baston (Cooldown)
         {
             movementTime += Time.deltaTime;
             if (movementTime > coolDown)
             {
-                transform.Translate(-velX * 1f, 0, 0);
+                transform.Translate(-velX * 0.5f, 0, 0);
                 active = true;
                 movementTime = 0;
+                basicEnemyScript.hit = false;
                 Debug.Log("enter2");
             }
         }

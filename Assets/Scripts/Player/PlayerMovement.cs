@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();   
+        attackSystem = Object.FindAnyObjectByType<AttackSystem>();
     }
 
     private void FixedUpdate()
@@ -31,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (horizontalInput != 0)
         {
-            //rb.AddForce(new Vector2 (horizontalInput * speed, 0f));
             rb.linearVelocityX = horizontalInput * speedX;
         }
 
@@ -61,13 +61,17 @@ public class PlayerMovement : MonoBehaviour
         isRight = !isRight;
     }
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("floor"))
         {
             canJump = true;
         }
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.CompareTag("fire"))
         {
             attackSystem.magicalBonus = 1;
@@ -79,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("rock"))
         {
             attackSystem.magicalBonus = 3;
+
         }
     }
 }

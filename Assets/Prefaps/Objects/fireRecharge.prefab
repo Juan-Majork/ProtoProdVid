@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: fireRecharge
       objectReference: {fileID: 0}
+    - target: {fileID: 2715542278395386960, guid: 21183904da34e844092faba5c823cb4f, type: 3}
+      propertyPath: m_TagString
+      value: fire
+      objectReference: {fileID: 0}
     - target: {fileID: 8219138235625684917, guid: 21183904da34e844092faba5c823cb4f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -28,17 +28,17 @@ public class AttackSystem : MonoBehaviour
 
         if (magicalBonus == 1)
         {
-            attack += 4;
+            attack = 5;
         }
 
         if (magicalBonus == 2)
         {
-            attack += 2;
+            attack = 4;
         }
 
         if (magicalBonus == 3)
         {
-            attack += 3;
+            attack = 6;
         }
     }
 

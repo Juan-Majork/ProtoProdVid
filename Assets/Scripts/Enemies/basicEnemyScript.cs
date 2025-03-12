@@ -9,6 +9,7 @@ public class basicEnemyScript : MonoBehaviour
     public float KBCounter;
     public float KBTotalTime;
     public bool KBRight;
+    public bool hit = false;
 
     [SerializeField] public int type;
 
@@ -35,36 +36,29 @@ public class basicEnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("staff") && !staffM.active)
+        if (collision.gameObject.CompareTag("staff") && staffM.active == false /*&& hit == false*/) //Si colision, baston y hitbox suceden
         {
-            KBCounter = 0;
+            KBCounter = 0; //Arranca el contador de knockback desde 0 
+            //hit = true; //Se confirma el hit y se evita un multihit
 
-            if (gameObject.transform.position.x > collision.transform.position.x) KBRight = true;
-            else KBRight = false;
+            if (gameObject.transform.position.x > collision.transform.position.x) KBRight = true; //Si golpea por derecha
+            else KBRight = false; //Si golpea por derecha
 
-            if (KBRight == true && KBCounter < KBTotalTime)
+            if (KBRight == true && KBCounter < KBTotalTime) //Si golpea por derecha y el contador es menor al tiempo total del knockback
             {
-                health -= atck.attack;
-                KBCounter += Time.deltaTime;
-                rb.linearVelocity = new Vector2 (KBForce, KBForce);
-                Debug.Log("health left: " +  health);
-                if (health < 0)
-                {
-                    dropScript.Dropeo();
-                    Destroy(gameObject);
-                }
+                health -= atck.attack; //Se resta vida
+                KBCounter += Time.deltaTime; //El contador suma
+                rb.linearVelocity = new Vector2 (KBForce, KBForce); //Se ejecuta el knockback
+                
+                Debug.Log("health left: " +  health); //notificacion por consola
             }
-            if (KBRight == false && KBCounter < KBTotalTime)
+            if (KBRight == false && KBCounter < KBTotalTime) //Si golpea por izquierda y el contador es menor al tiempo total del knockback
             {
-                health -= atck.attack;
-                rb.linearVelocity = new Vector2(-KBForce, KBForce);
-                KBCounter += Time.deltaTime;
-                Debug.Log("health left: " + health);
-                if (health < 0)
-                {
-                    dropScript.Dropeo();
-                    Destroy(gameObject);
-                }
+                health -= atck.attack; //Se resta vida
+                rb.linearVelocity = new Vector2(-KBForce, KBForce); //El contador suma
+                KBCounter += Time.deltaTime; //Se ejecuta el knockback
+
+                Debug.Log("health left: " + health); //notificacion por consola
             }
             
         }
