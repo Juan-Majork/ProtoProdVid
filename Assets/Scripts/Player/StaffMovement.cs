@@ -14,14 +14,11 @@ public class StaffMovement : MonoBehaviour
 
     private CircleCollider2D circleCollider;
 
-    private SpriteRenderer spriteRenderer;
-
     private void Awake()
     {
         basicEnemyScript = Object.FindAnyObjectByType<basicEnemyScript>();
         magicsScript = Object.FindAnyObjectByType<magicsScript>();
         circleCollider = GetComponent<CircleCollider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();    
     }
 
     // Update is called once per frame
@@ -43,7 +40,6 @@ public class StaffMovement : MonoBehaviour
                 if (active)
                 {
                     transform.Translate(velX * 0.5f, 0, 0);
-                    spriteRenderer.enabled = true;
                     circleCollider.enabled = true;
                     active = false;
                     Debug.Log("enter");
@@ -59,11 +55,10 @@ public class StaffMovement : MonoBehaviour
             if (movementTime > coolDown)
             {
                 transform.Translate(-velX * 0.5f, 0, 0);
-                spriteRenderer.enabled = false;
                 circleCollider.enabled = false;
                 active = true;
-                movementTime = 0;
                 basicEnemyScript.hit = false;
+                movementTime = 0;
                 Debug.Log("enter2");
             }
         }

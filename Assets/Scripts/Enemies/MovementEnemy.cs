@@ -10,6 +10,8 @@ public class MovementEnemy : MonoBehaviour
     private GameObject player;
     private Transform playerTransform;
 
+    public bool KBAct = false;
+
     private bool isRight = false;
 
     private void Awake()
@@ -21,20 +23,8 @@ public class MovementEnemy : MonoBehaviour
 
     private void Update()
     {
-        Vector2 direction = (playerTransform.position - transform.position).normalized;
 
-        movement = new Vector2(direction.x, 0);
-
-        rb.MovePosition(rb.position + movement  * speed * Time.deltaTime);
-
-        if (rb.linearVelocityX > 0 && !isRight)
-        {
-            Flip();
-        }
-        if (rb.linearVelocityX < 0 && isRight)
-        {
-            Flip();
-        }
+            
     }
 
     private void Flip()

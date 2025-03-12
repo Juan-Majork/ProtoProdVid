@@ -1,17 +1,27 @@
+using UnityEditor;
 using UnityEngine;
 
 public class basicEnemyScript : MonoBehaviour
 {
-
+    //Stats
     [SerializeField] private int health;
+    [SerializeField] private float speed;
+    private Vector2 movement;
 
+    //Parametros Knockback 
     public float KBForce;
     public float KBCounter;
     public float KBTotalTime;
     public bool KBRight;
-    public bool hit = false;
+    public bool hit=false;
+    private float KBcoolDown = 0; 
+    private float KBReset = 1f;
 
+    //Tipo de enemigo
     [SerializeField] public int type;
+    
+    private GameObject player;
+    private Transform playerTransform;
 
     private AttackSystem atck;
 
@@ -27,19 +37,47 @@ public class basicEnemyScript : MonoBehaviour
         staffM = Object.FindAnyObjectByType<StaffMovement>();
         rb = GetComponent<Rigidbody2D>();
         dropScript = GetComponent<DropScript>();
+        player = GameObject.FindWithTag("player");
+        playerTransform = player.GetComponent<Transform>();
+    }
+
+
+    private void Update()
+    {
+        if (!hit)
+        {
+            KBcoolDown = 0;
+            Vector2 direction = (playerTransform.position - transform.position).normalized;
+
+            movement = new Vector2(direction.x, 0);
+
+            rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+        }
+        if (hit)
+        {
+            KBcoolDown += Time.deltaTime;
+            if(KBcoolDown > KBReset)
+            {
+                hit = false;
+            }
+        }
+        
+        
     }
 
     private void FixedUpdate()
     {
+        
+        
         Health();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("staff") && staffM.active == false /*&& hit == false*/) //Si colision, baston y hitbox suceden
+        if (collision.gameObject.CompareTag("staff") && staffM.active == false ) //Si colision y baston sin cooldown 
         {
             KBCounter = 0; //Arranca el contador de knockback desde 0 
-            //hit = true; //Se confirma el hit y se evita un multihit
+            hit = true;
 
             if (gameObject.transform.position.x > collision.transform.position.x) KBRight = true; //Si golpea por derecha
             else KBRight = false; //Si golpea por derecha
@@ -63,6 +101,7 @@ public class basicEnemyScript : MonoBehaviour
             
         }
     }
+
 
     private void Health()
     {
