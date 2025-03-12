@@ -8,6 +8,9 @@ TagManager:
   - player
   - staff
   - enemy
+  - rock
+  - fire
+  - water
   layers:
   - Default
   - TransparentFX

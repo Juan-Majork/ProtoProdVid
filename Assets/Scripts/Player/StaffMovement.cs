@@ -10,10 +10,12 @@ public class StaffMovement : MonoBehaviour
 
     private basicEnemyScript basicEnemyScript;
 
+    private magicsScript magicsScript;
 
     private void Awake()
     {
         basicEnemyScript = Object.FindAnyObjectByType<basicEnemyScript>();
+        magicsScript = Object.FindAnyObjectByType<magicsScript>();
     }
 
     // Update is called once per frame
@@ -26,14 +28,22 @@ public class StaffMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) //Activacion del baston
         {
-            if (active)
+            if (magicsScript.rockAtk)
             {
-                transform.Translate(velX * 0.5f, 0, 0);
-                
-                active = false;
-                Debug.Log("enter");
-
+                magicsScript.magicAttacks();
             }
+            else
+            {
+                if (active)
+                {
+                    transform.Translate(velX * 0.5f, 0, 0);
+
+                    active = false;
+                    Debug.Log("enter");
+
+                }
+            }
+            
         }
 
         if (!active) //Reseteo del baston (Cooldown)

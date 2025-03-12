@@ -18,12 +18,15 @@ public class PlayerMovement : MonoBehaviour
 
     private AttackSystem attackSystem;
 
+    private magicsScript magicsScript;
+
     private Rigidbody2D rb;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();   
         attackSystem = Object.FindAnyObjectByType<AttackSystem>();
+        magicsScript = Object.FindAnyObjectByType<magicsScript>();
     }
 
     private void FixedUpdate()
@@ -75,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("fire"))
         {
             attackSystem.magicalBonus = 1;
+
         }
         if (collision.gameObject.CompareTag("water"))
         {
@@ -83,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("rock"))
         {
             attackSystem.magicalBonus = 3;
+            magicsScript.rockAtk = true;
 
         }
     }
