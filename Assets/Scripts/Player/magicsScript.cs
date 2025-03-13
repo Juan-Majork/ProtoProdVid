@@ -12,8 +12,7 @@ public class magicsScript : MonoBehaviour
     [SerializeField] public GameObject Fire;
     [SerializeField] public GameObject Water;
     [SerializeField] public Transform spawnRock;
-    [SerializeField] public Transform spawnFire;
-    [SerializeField] public Transform spawnWater;
+
 
     private AttackSystem attackSystem;
 
@@ -55,9 +54,7 @@ public class magicsScript : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    Instantiate(Fire, spawnFire.position, spawnFire.rotation);
-                    damageControl.fireOnScreen = true;
-                    damageControl.MagicDamage();
+                    Fire.SetActive(true);
                     fireAtk = false;
                     fullMagic--;
                 }
@@ -66,9 +63,7 @@ public class magicsScript : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    Instantiate(Water, spawnWater.position, spawnWater.rotation);
-                    damageControl.waterOnScreen = true;
-                    damageControl.MagicDamage();
+                    Water.SetActive(true);
                     waterAtk = false;
                     fullMagic--;
                 }
@@ -89,9 +84,7 @@ public class magicsScript : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    Instantiate(Fire, spawnFire.position, spawnFire.rotation);
-                    damageControl.fireOnScreen = true;
-                    damageControl.MagicDamage();
+                    Fire.SetActive(true);
                     fireAtk = false;
                     fullMagic--;
                 }
@@ -100,9 +93,7 @@ public class magicsScript : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    Instantiate(Water, spawnWater.position, spawnWater.rotation);
-                    damageControl.waterOnScreen = true;
-                    damageControl.MagicDamage();
+                    Water.SetActive(true);
                     waterAtk = false;
                     fullMagic--;
                 }

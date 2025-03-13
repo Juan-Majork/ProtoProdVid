@@ -77,16 +77,19 @@ public class PlayerMovement : MonoBehaviour
         {
             magicsScript.fireAtk = true;
             magicsScript.fullMagic++;
+            Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("water") && magicsScript.fullMagic < 2)
         {
             magicsScript.waterAtk = true;
             magicsScript.fullMagic++;
+            Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("rock") && magicsScript.fullMagic < 2)
         {
             magicsScript.rockAtk = true;
             magicsScript.fullMagic++;
+            Destroy(collision.gameObject);
         }
     }
 }

@@ -13,12 +13,16 @@ public class basicEnemyScript : MonoBehaviour
     public float KBCounter;
     public float KBTotalTime;
     public bool KBRight;
-    public bool hit=false;
-    private float KBcoolDown = 0; 
+    private float KBcoolDown = 0;
     private float KBReset = 1f;
 
     //Tipo de enemigo
     [SerializeField] public int type;
+
+    private int iceCounter = 0;
+    private float frozen = 0;
+
+    private int fireCounter = 0;
     
     private GameObject player;
     private Transform playerTransform;
@@ -26,8 +30,6 @@ public class basicEnemyScript : MonoBehaviour
     private AttackSystem atck;
 
     private StaffMovement staffM;
-
-    private magicsScript magicsScript;
 
     private DropScript dropScript;
 
@@ -37,8 +39,8 @@ public class basicEnemyScript : MonoBehaviour
 
     private void Awake()
     {
-        atck = Object.FindAnyObjectByType<AttackSystem>();
-        staffM = Object.FindAnyObjectByType<StaffMovement>();
+        atck = GameObject.FindAnyObjectByType<AttackSystem>();
+        staffM = GameObject.FindAnyObjectByType<StaffMovement>();
         rb = GetComponent<Rigidbody2D>();
         dropScript = GetComponent<DropScript>();
         player = GameObject.FindWithTag("player");
@@ -49,7 +51,7 @@ public class basicEnemyScript : MonoBehaviour
     private void Update()
     {
         //Ajustes de Knockback
-        if (!hit) //El enemigo camina hacia el jugador cuando no esta stuneado
+        if (!staffM.hitConfirmer) //El enemigo camina hacia el jugador cuando no esta stuneado
         {
             KBcoolDown = 0;
             Vector2 direction = (playerTransform.position - transform.position).normalized;
@@ -58,12 +60,12 @@ public class basicEnemyScript : MonoBehaviour
 
             rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
         }
-        if (hit) //Si recibe un ataque del baston, recibe knockback
+        if (staffM.hitConfirmer) //Si recibe un ataque del baston, recibe knockback
         {
             KBcoolDown += Time.deltaTime;
             if(KBcoolDown > KBReset)
             {
-                hit = false;
+                staffM.hitConfirmer = false;
             }
         }
         
@@ -81,7 +83,7 @@ public class basicEnemyScript : MonoBehaviour
         if (collision.gameObject.CompareTag("staff") && staffM.active == false ) //Si colision y baston sin cooldown 
         {
             KBCounter = 0; //Arranca el contador de knockback desde 0 
-            hit = true;
+            staffM.hitConfirmer = true;
 
             if (gameObject.transform.position.x > collision.transform.position.x) KBRight = true; //Si golpea por derecha
             else KBRight = false; //Si golpea por derecha
@@ -106,9 +108,33 @@ public class basicEnemyScript : MonoBehaviour
         }
 
         //Daño magia de 1 colision
-        if (collision.gameObject.CompareTag("rockMagic") || collision.gameObject.CompareTag("waterMagic")) //colision con hechizo
+        if (collision.gameObject.CompareTag("rockMagic")) //colision con hechizo
         {
+            damageControl = GameObject.Find("rockMagic(Clone)").GetComponent<damageControl>();
             health -= damageControl.dmg;
+        }
+
+        if (collision.gameObject.CompareTag("waterMagic"))
+        {
+            damageControl = GameObject.Find("waterMagic").GetComponent<damageControl>();
+            health -= damageControl.dmg;
+            iceCounter++;
+            if (iceCounter > 2)
+            {
+                speed -= speed;
+                if (frozen < 2)
+                {
+                    frozen += Time.deltaTime;
+                }
+                else
+                {
+                    speed += speed;
+                    frozen = 0;
+                    iceCounter = 0;
+                    Debug.Log("Frozen Ended");
+                }
+            }
+
         }
     }
 
@@ -117,14 +143,20 @@ public class basicEnemyScript : MonoBehaviour
         //Daño magia sostenida en el tiempo
         if (collision.gameObject.CompareTag("fireMagic"))
         {
-            health -= damageControl.dmg;
+            damageControl = GameObject.Find("fireMagic").GetComponent<damageControl>();
+            damageControl.dmgCounter += Time.deltaTime;
+            if (damageControl.dmgCounter > 1) //Cada 1 segundo, hace daño
+            {
+                health -= damageControl.dmg;
+                damageControl.dmgCounter = 0;
+            }
         }
     }
 
 
     private void Health()
     {
-        if (health < 0)
+        if (health <= 0)
         {
             dropScript.Dropeo();
             Destroy(gameObject);

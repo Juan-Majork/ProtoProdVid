@@ -5,6 +5,7 @@ public class StaffMovement : MonoBehaviour
 
     private int velX = 1;
     public bool active = true;
+    public bool hitConfirmer = false;
     private float movementTime = 0;
     private float coolDown = 0.2f;
 
@@ -31,7 +32,7 @@ public class StaffMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)) //Activacion del baston
         {
-            if (magicsScript.rockAtk)
+            if (magicsScript.rockAtk || magicsScript.fireAtk || magicsScript.waterAtk)
             {
                 magicsScript.magicAttacks();
             }
@@ -57,7 +58,7 @@ public class StaffMovement : MonoBehaviour
                 transform.Translate(-velX * 0.5f, 0, 0);
                 circleCollider.enabled = false;
                 active = true;
-                basicEnemyScript.hit = false;
+                hitConfirmer = false;
                 movementTime = 0;
                 Debug.Log("enter2");
             }
