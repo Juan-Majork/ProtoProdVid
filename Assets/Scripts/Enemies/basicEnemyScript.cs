@@ -27,7 +27,11 @@ public class basicEnemyScript : MonoBehaviour
 
     private StaffMovement staffM;
 
+    private magicsScript magicsScript;
+
     private DropScript dropScript;
+
+    private damageControl damageControl;
 
     public Rigidbody2D rb;
 
@@ -44,7 +48,8 @@ public class basicEnemyScript : MonoBehaviour
 
     private void Update()
     {
-        if (!hit)
+        //Ajustes de Knockback
+        if (!hit) //El enemigo camina hacia el jugador cuando no esta stuneado
         {
             KBcoolDown = 0;
             Vector2 direction = (playerTransform.position - transform.position).normalized;
@@ -53,7 +58,7 @@ public class basicEnemyScript : MonoBehaviour
 
             rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
         }
-        if (hit)
+        if (hit) //Si recibe un ataque del baston, recibe knockback
         {
             KBcoolDown += Time.deltaTime;
             if(KBcoolDown > KBReset)
@@ -66,14 +71,13 @@ public class basicEnemyScript : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        
-        
+    {   
         Health();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Daño del baston
         if (collision.gameObject.CompareTag("staff") && staffM.active == false ) //Si colision y baston sin cooldown 
         {
             KBCounter = 0; //Arranca el contador de knockback desde 0 
@@ -99,6 +103,21 @@ public class basicEnemyScript : MonoBehaviour
                 Debug.Log("health left: " + health); //notificacion por consola
             }
             
+        }
+
+        //Daño magia de 1 colision
+        if (collision.gameObject.CompareTag("rockMagic") || collision.gameObject.CompareTag("waterMagic")) //colision con hechizo
+        {
+            health -= damageControl.dmg;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        //Daño magia sostenida en el tiempo
+        if (collision.gameObject.CompareTag("fireMagic"))
+        {
+            health -= damageControl.dmg;
         }
     }
 

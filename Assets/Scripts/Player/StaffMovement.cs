@@ -27,7 +27,7 @@ public class StaffMovement : MonoBehaviour
         MoveTheStaff(); //Ataque de baston
     }
 
-    public void MoveTheStaff()
+    public void MoveTheStaff() //Ataque con baston
     {
         if (Input.GetKeyDown(KeyCode.Space)) //Activacion del baston
         {
@@ -62,8 +62,5 @@ public class StaffMovement : MonoBehaviour
                 Debug.Log("enter2");
             }
         }
-        
-
-        
     }
 }

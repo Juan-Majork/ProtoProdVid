@@ -11,12 +11,9 @@ public class PlayerMovement : MonoBehaviour
     private float speedY;
 
     private float horizontalInput;
-    private float verticalInput;
 
     private bool canJump;
     private bool isRight = true;
-
-    private AttackSystem attackSystem;
 
     private magicsScript magicsScript;
 
@@ -25,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();   
-        attackSystem = Object.FindAnyObjectByType<AttackSystem>();
         magicsScript = Object.FindAnyObjectByType<magicsScript>();
     }
 
@@ -67,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Saltar
         if (collision.gameObject.CompareTag("floor"))
         {
             canJump = true;
@@ -75,20 +72,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("fire"))
+        //colision jugador con magic drops
+        if (collision.gameObject.CompareTag("fire") && magicsScript.fullMagic < 2)
         {
-            attackSystem.magicalBonus = 1;
-
+            magicsScript.fireAtk = true;
+            magicsScript.fullMagic++;
         }
-        if (collision.gameObject.CompareTag("water"))
+        if (collision.gameObject.CompareTag("water") && magicsScript.fullMagic < 2)
         {
-            attackSystem.magicalBonus = 2;
+            magicsScript.waterAtk = true;
+            magicsScript.fullMagic++;
         }
-        if (collision.gameObject.CompareTag("rock"))
+        if (collision.gameObject.CompareTag("rock") && magicsScript.fullMagic < 2)
         {
-            attackSystem.magicalBonus = 3;
             magicsScript.rockAtk = true;
-
+            magicsScript.fullMagic++;
         }
     }
 }

@@ -6,11 +6,13 @@ public class AttackSystem : MonoBehaviour
 
     public int attack = 2;
 
-    public int magicalBonus = 0;
-    //1 = fire
-    //2 = water
-    //3 = rock
+    private magicsScript magicsScript;
 
+
+    private void Awake()
+    {
+        magicsScript = magicsScript = Object.FindAnyObjectByType<magicsScript>();
+    }
 
     private void Start()
     {
@@ -25,18 +27,16 @@ public class AttackSystem : MonoBehaviour
 
     public void magicPlus()
     {
-
-        if (magicalBonus == 1)
+        //Incrementa el daño del baston cuando se pickea magia
+        if (magicsScript.fireAtk && magicsScript.fullMagic < 3)
         {
             attack = 5;
         }
-
-        if (magicalBonus == 2)
+        if (magicsScript.waterAtk && magicsScript.fullMagic < 3)
         {
             attack = 4;
         }
-
-        if (magicalBonus == 3)
+        if (magicsScript.rockAtk && magicsScript.fullMagic < 3)
         {
             attack = 6;
         }

@@ -11,6 +11,9 @@ TagManager:
   - rock
   - fire
   - water
+  - rockMagic
+  - fireMagic
+  - waterMagic
   layers:
   - Default
   - TransparentFX
