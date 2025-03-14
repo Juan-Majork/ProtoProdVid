@@ -68,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         {
             canJump = true;
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
