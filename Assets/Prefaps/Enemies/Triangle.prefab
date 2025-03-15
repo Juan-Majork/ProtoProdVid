@@ -188,6 +188,7 @@ MonoBehaviour:
   KBTotalTime: 3
   KBRight: 0
   type: 0
+  killScore: 1
   rb: {fileID: 3005873515390107929}
 --- !u!114 &8549049145034882757
 MonoBehaviour:

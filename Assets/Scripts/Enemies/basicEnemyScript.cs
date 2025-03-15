@@ -19,6 +19,8 @@ public class basicEnemyScript : MonoBehaviour
     //Tipo de enemigo
     [SerializeField] public int type;
 
+    [SerializeField] private int killScore;
+
     private int iceCounter = 0;
     private float frozen = 0;
 
@@ -37,6 +39,8 @@ public class basicEnemyScript : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    private ScoreController scoreController;
+
     private void Awake()
     {
         atck = GameObject.FindAnyObjectByType<AttackSystem>();
@@ -45,6 +49,7 @@ public class basicEnemyScript : MonoBehaviour
         dropScript = GetComponent<DropScript>();
         player = GameObject.FindWithTag("player");
         playerTransform = player.GetComponent<Transform>();
+        scoreController = FindFirstObjectByType<ScoreController>();
     }
 
 
@@ -158,6 +163,8 @@ public class basicEnemyScript : MonoBehaviour
     {
         if (health <= 0)
         {
+            scoreController.AddScore(killScore);
+
             dropScript.Dropeo();
             Destroy(gameObject);
         }
