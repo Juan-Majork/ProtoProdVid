@@ -860,6 +860,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 843236119}
+  - component: {fileID: 843236120}
   m_Layer: 5
   m_Name: Health Bar
   m_TagString: Untagged
@@ -888,6 +889,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &843236120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843236118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00e17b55c964af43a358c29706ee6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarForgroundimage: {fileID: 1932783829}
 --- !u!1 &983678627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,7 +1807,19 @@ MonoBehaviour:
       m_Calls: []
   cambioEnVida:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 843236120}
+        m_TargetAssemblyTypeName: HealthBarUi, Assembly-CSharp
+        m_MethodName: UpadeteHealthBar
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1965525582}
+          m_ObjectArgumentAssemblyTypeName: HealthController, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1973517650
 PrefabInstance:
   m_ObjectHideFlags: 0
