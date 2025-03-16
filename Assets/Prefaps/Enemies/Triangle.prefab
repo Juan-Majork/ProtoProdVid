@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3005873515390107929}
   - component: {fileID: 8298726401053356749}
   - component: {fileID: 8549049145034882757}
+  - component: {fileID: 2719845308957941899}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: enemy
@@ -186,7 +187,6 @@ MonoBehaviour:
   KBCounter: 0
   KBTotalTime: 3
   KBRight: 0
-  hit: 0
   type: 0
   rb: {fileID: 3005873515390107929}
 --- !u!114 &8549049145034882757
@@ -202,3 +202,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   element: {fileID: 0}
+--- !u!114 &2719845308957941899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5125111788900903694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6eab0efccad8a428927b571047f399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

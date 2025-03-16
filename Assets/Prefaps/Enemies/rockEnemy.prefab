@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.16037738
       objectReference: {fileID: 0}
+    - target: {fileID: 2719845308957941899, guid: c0eb716c26e2f4a489ef560684122f3e, type: 3}
+      propertyPath: damage
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5125111788900903694, guid: c0eb716c26e2f4a489ef560684122f3e, type: 3}
       propertyPath: m_Name
       value: rockEnemy
